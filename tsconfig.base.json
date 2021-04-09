@@ -14,7 +14,14 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@victor-videos/victor-videos/home": [
+        "libs/victor-videos/home/src/index.ts"
+      ],
+      "@victor-videos/victor-videos/detail": [
+        "libs/victor-videos/detail/src/index.ts"
+      ]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

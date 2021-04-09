@@ -1,0 +1,33 @@
+<div class="hero">
+  <h1>Victor Videos Online</h1>
+  <p>The hottest spot for everything Victor Savkin, all the time, 24/7/365.</p>
+</div>
+
+<ng-container *ngIf="videos$ | async as videos; else loading">
+  <mat-grid-list cols="4" rowHeight="500px" gutterSize="24">
+    <mat-grid-tile *ngFor="let video of videos.items">
+      <mat-card class="video-thumbnail-card">
+        <mat-card-header>
+          <div mat-card-avatar class="victor-profile-photo"></div>
+          <mat-card-title>Presenter: Victor Savkin</mat-card-title>
+          <mat-card-subtitle>Title: {{ video.title }}</mat-card-subtitle>
+        </mat-card-header>
+        <img
+          mat-card-image
+          [src]="sanitizeSrc(video.id.videoId)"
+          alt="Thumbnail preview of video"
+        />
+
+        <mat-card-actions>
+          <a
+            mat-raised-button
+            color="primary"
+            [routerLink]="['/detail', video.id.videoId]"
+            >Watch</a
+          >
+        </mat-card-actions>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</ng-container>
+<ng-template #loading> Loading videos </ng-template>

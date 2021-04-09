@@ -1,0 +1,31 @@
+@import '../../../../../node_modules/@angular/material/prebuilt-themes/indigo-pink.css';
+:host {
+  display: block;
+  margin: 24px;
+}
+
+.hero {
+  height: 310px;
+  margin: 100px 0;
+  color: white;
+  font-size: 200%;
+  h1 {
+    font-size: 100px;
+    display: block;
+    height: 100px;
+    margin: 24;
+    line-height: 100px;
+    font-weight: bold;
+  }
+  p {
+    font-size: 24px;
+    margin: 24px;
+    line-height: 24px;
+    height: 24px;
+  }
+}
+
+.victor-profile-photo {
+  background-image: url('https://pbs.twimg.com/profile_images/1320317486257049600/G82C0WHL_400x400.jpg');
+  background-size: cover;
+}

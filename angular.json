@@ -25,7 +25,8 @@
     "@nrwl/angular:library": {
       "style": "scss",
       "linter": "eslint",
-      "unitTestRunner": "jest"
+      "unitTestRunner": "jest",
+      "strict": true
     },
     "@nrwl/angular:component": {
       "style": "scss"
@@ -51,7 +52,10 @@
               "apps/victor-videos/src/favicon.ico",
               "apps/victor-videos/src/assets"
             ],
-            "styles": ["apps/victor-videos/src/styles.scss"],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "apps/victor-videos/src/styles.scss"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -87,7 +91,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "victor-videos:build"
+            "browserTarget": "victor-videos:build",
+            "proxyConfig": "apps/victor-videos/proxy.conf.json"
           },
           "configurations": {
             "production": {
@@ -142,6 +147,130 @@
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": ["apps/victor-videos-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
+    },
+    "victor-videos-home": {
+      "projectType": "library",
+      "root": "libs/victor-videos/home",
+      "sourceRoot": "libs/victor-videos/home/src",
+      "prefix": "victor-videos",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:ng-packagr-lite",
+          "options": {
+            "tsConfig": "libs/victor-videos/home/tsconfig.lib.json",
+            "project": "libs/victor-videos/home/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/victor-videos/home/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/victor-videos/home/src/**/*.ts",
+              "libs/victor-videos/home/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/victor-videos/home"],
+          "options": {
+            "jestConfig": "libs/victor-videos/home/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "victor-videos-detail": {
+      "projectType": "library",
+      "root": "libs/victor-videos/detail",
+      "sourceRoot": "libs/victor-videos/detail/src",
+      "prefix": "victor-videos",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:ng-packagr-lite",
+          "options": {
+            "tsConfig": "libs/victor-videos/detail/tsconfig.lib.json",
+            "project": "libs/victor-videos/detail/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/victor-videos/detail/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/victor-videos/detail/src/**/*.ts",
+              "libs/victor-videos/detail/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/victor-videos/detail"],
+          "options": {
+            "jestConfig": "libs/victor-videos/detail/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "prod-server": {
+      "root": "apps/prod-server",
+      "sourceRoot": "apps/prod-server/src",
+      "projectType": "application",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/node:build",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/prod-server",
+            "main": "apps/prod-server/src/main.ts",
+            "tsConfig": "apps/prod-server/tsconfig.app.json",
+            "assets": ["apps/prod-server/src/assets"]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/prod-server/src/environments/environment.ts",
+                  "with": "apps/prod-server/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "prod-server:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/prod-server/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/prod-server"],
+          "options": {
+            "jestConfig": "apps/prod-server/jest.config.js",
+            "passWithNoTests": true
           }
         }
       }

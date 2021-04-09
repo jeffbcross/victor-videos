@@ -1,1 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
+@import '../../../node_modules/@angular/material/prebuilt-themes/indigo-pink.css';
+body,
+html {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-image: linear-gradient(
+      to bottom,
+      rgba(255, 255, 0, 0.5),
+      rgba(0, 0, 255, 0.5)
+    ),
+    url('assets/victor-picture.png');
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
