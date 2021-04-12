@@ -5,14 +5,17 @@
 
 import * as express from 'express';
 
-const app = express();
+import * as expressStaticGzip from 'express-static-gzip';
 
+const app = express();
 
 app.get('/api', (req, res) => {
   res.send({ message: 'Welcome to prod-server!' });
 });
 
-app.use('*', express.static('dist/apps/victor-videos'));
+app.use(expressStaticGzip('dist/apps/victor-videos', {}));
+app.use('/home', expressStaticGzip('dist/apps/victor-videos', {}));
+app.use('/detail/*', expressStaticGzip('dist/apps/victor-videos', {}));
 
 const port = process.env.port || 3333;
 const server = app.listen(port, () => {
