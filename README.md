@@ -11,6 +11,16 @@ We'll be looking at an app that resembles real-world performance issues, and wil
   - **Code Coverage** _to see what CSS and JS_
 - **Source Map Explorer** _to see what's inside bundles_
 
+## Running the App
+
+To run the app with production configuration, follow these steps:
+
+1. `npm install`
+1. `npx nx build victor-videos --prod`
+1. `npx nx build prod-server --prod`
+1. `node dist/apps/prod-server/main.js`
+1. Open `localhost:3333`
+
 ## Resources
 
 The UAAO doc created during the workshop can be viewed here: https://docs.google.com/document/d/1JCC9SuKSgQ3nDltLrJCmTUtWrLJRvWWIX0FdywvNl88/edit?usp=sharing
