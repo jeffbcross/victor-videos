@@ -1,3 +1,5 @@
+![Screenshot of Victor Videos app](/screenshot.png)
+
 # Performance Workshop
 
 Presented by [Jeff Cross](https://twitter.com/jeffbcross) of [Nrwl](https://nrwl.io) at ng-conf 2021.
@@ -8,7 +10,7 @@ We'll be looking at an app that resembles real-world performance issues, and wil
   - **Lighthouse** _for measuring startup performance_
   - **Network** _tab to understand how resources are being loaded_
   - **Performance** _tab to see full view of app performance_
-  - **Code Coverage** _to see what CSS and JS_
+  - **Code Coverage** _to see what CSS and JS aren't being used_
 - **Source Map Explorer** _to see what's inside bundles_
 
 ## Running the App
